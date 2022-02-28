@@ -1,22 +1,23 @@
 import React from 'react';
 import './todo-list-item.css';
 
-const TodoListItem = ({ onDelete, onImportant, id, label, important = false }) => {
+const TodoListItem = ({ onDelete, onImportant,  onDone, id, label, important = false, done = false }) => {
 
   const style = {
     color: important ? 'steelblue' : 'black',
-    fontWeight: important ? 'bold' : 'normal'
+    fontWeight: important ? 'bold' : 'normal',
+    textDecoration: done ? 'line-through' : 'none'
   };
 
   return (
-    <span className="todo-list-item">
-      <span
-        className="todo-list-item-label"
-        style={style}>
+    <span style={style} className='todo-list-item'>
+      <span onClick={() => {onDone(id)}
+      } className='todo-list-item-label'>
         {label}
       </span>
 
-      <button onClick={()=>{onImportantgit(id)}} type="button" className="btn btn-outline-success btn-sm float-right">
+
+      <button onClick={()=>{onImportant(id)}} type="button" className="btn btn-outline-success btn-sm float-right">
         <i className="fa fa-exclamation" />
       </button>
 
