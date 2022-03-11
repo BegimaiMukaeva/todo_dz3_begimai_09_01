@@ -12,7 +12,7 @@ class App extends React.Component {
     state = {
         todos: [
              { id: 1, label: 'Drink Coffee', important: false, done: false },
-             { id: 2, label: 'Drink tea', important: false, done: true },
+             { id: 2, label: 'Drink tea', important: false, done: false },
              { id: 3, label: 'Drink vodka', important: false, done: false },
              { id: 4, label: 'Drink water', important: false, done: false },
              { id: 5, label: 'Read', important: false, done: false },
@@ -57,13 +57,13 @@ class App extends React.Component {
         this.setState((oldState) => {
             const idx = oldState.todos.findIndex((item) => item.id === doneId)
             const prev = oldState.todos.slice(0, idx)
-            const strike = oldState.todos[idx]
+            const current = oldState.todos[idx]
             const next = oldState.todos.slice(idx + 1)
 
             return {
                 todos:
                     [...prev,
-                        {...strike, done: !strike.done},
+                        {...current, done: !current.done},
                         ...next]
             }
         })
